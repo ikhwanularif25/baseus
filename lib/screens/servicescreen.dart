@@ -1,5 +1,7 @@
 // ignore_for_file: camel_case_types, prefer_typing_uninitialized_variables
 
+import 'package:baseus/components/service_component/help_center_container.dart';
+import 'package:baseus/components/service_component/service_name.dart';
 import 'package:flutter/material.dart';
 
 class Servicescreen extends StatefulWidget {
@@ -14,14 +16,30 @@ class _ServicescreenState extends State<Servicescreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Service"),
-        actions: const [],
+        backgroundColor: Colors.grey[200],
+        centerTitle: true,
+        automaticallyImplyLeading: false,
+        title: Text(
+          "Service",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        actions: <Widget>[
+          // Tambahkan aksi lain di sini jika diperlukan
+        ],
       ),
       body: SingleChildScrollView(
         child: Container(
-          padding: const EdgeInsets.all(10.0),
+          padding: const EdgeInsets.all(18.0),
           child: Column(
-            children: [],
+            children: [
+              ServiceName(
+                judul: "Help Center",
+              ),
+              HelpCenterContainer(),
+              ServiceName(),
+            ],
           ),
         ),
       ),
