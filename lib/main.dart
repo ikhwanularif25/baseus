@@ -1,7 +1,6 @@
 // main.dart
 import 'package:baseus/screens/initial_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
 import 'homepage.dart';
 import 'package:webview_flutter/webview_flutter.dart';
@@ -26,7 +25,9 @@ class _MyAppState extends State<MyApp> {
         scaffoldBackgroundColor: Colors.grey[200],
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
         useMaterial3: true,
-        textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme),
+        textTheme: Theme.of(context).textTheme.apply(
+              fontFamily: 'Montserrat-Bold',
+            ),
       ),
       initialRoute: '/',
       routes: {
