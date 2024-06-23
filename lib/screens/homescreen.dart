@@ -1,5 +1,3 @@
-// ignore_for_file: camel_case_types, prefer_typing_uninitialized_variables
-
 import 'package:baseus/components/CarauselSlider.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttericon/font_awesome_icons.dart';
@@ -14,11 +12,10 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double avatarRadius = screenWidth * 0.08;
+
     return Scaffold(
-      // appBar: AppBar(
-      //   title: const Text("Home"),
-      //   actions: const [],
-      // ),
       body: Container(
         padding: const EdgeInsets.all(20.0),
         child: Column(
@@ -28,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Row(
                 children: [
                   CircleAvatar(
-                    radius: 30.0,
+                    radius: avatarRadius,
                     backgroundImage: AssetImage("assets/images/foto1.jpg"),
                   ),
                   const SizedBox(
@@ -42,11 +39,12 @@ class _HomeScreenState extends State<HomeScreen> {
                           Text(
                             "Davi's Baseus",
                             style: TextStyle(
-                                fontSize: 20.0,
-                                fontFamily: 'Montserrat-Bold',
-                                fontWeight: FontWeight.bold,
-                                letterSpacing: 0,
-                                height: 1),
+                              fontSize: 20.0,
+                              fontFamily: 'Montserrat-Bold',
+                              fontWeight: FontWeight.bold,
+                              letterSpacing: 0,
+                              height: 1,
+                            ),
                           ),
                           const Icon(
                             Icons.arrow_right,
@@ -57,10 +55,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       Text(
                         "Limau Manis",
                         style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 14.0,
-                            fontFamily: 'sen',
-                            fontWeight: FontWeight.normal),
+                          color: Colors.grey,
+                          fontSize: 14.0,
+                          fontFamily: 'sen',
+                          fontWeight: FontWeight.normal,
+                        ),
                       ),
                     ],
                   ),

@@ -1,9 +1,10 @@
 // ignore_for_file: camel_case_types, prefer_typing_uninitialized_variables
 
 import 'package:baseus/screens/homescreen.dart';
-import 'package:baseus/screens/mailscreen.dart';
+// import 'package:baseus/screens/mailscreen.dart';
 import 'package:baseus/screens/myscreen.dart';
 import 'package:baseus/screens/servicescreen.dart';
+import 'package:baseus/screens/storescreen.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -16,7 +17,7 @@ class _HomePageState extends State<HomePage> {
 
   final List<Widget> _pages = [
     HomeScreen(),
-    MasilScreen(),
+    StoreScreen(),
     Servicescreen(),
     Myscreen(),
   ];
@@ -35,7 +36,7 @@ class _HomePageState extends State<HomePage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_bag_outlined),
-            label: 'Mail',
+            label: 'Store',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.favorite_border),
