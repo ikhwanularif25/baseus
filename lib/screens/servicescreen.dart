@@ -3,6 +3,7 @@
 import 'package:baseus/components/service_component/help_center_container.dart';
 import 'package:baseus/components/service_component/service_name.dart';
 import 'package:flutter/material.dart';
+import 'package:simple_ripple_animation/simple_ripple_animation.dart';
 
 class Servicescreen extends StatefulWidget {
   const Servicescreen({Key? key}) : super(key: key);
@@ -25,9 +26,7 @@ class _ServicescreenState extends State<Servicescreen> {
             fontWeight: FontWeight.bold,
           ),
         ),
-        actions: <Widget>[
-          // Tambahkan aksi lain di sini jika diperlukan
-        ],
+        actions: <Widget>[],
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -39,6 +38,23 @@ class _ServicescreenState extends State<Servicescreen> {
               ),
               HelpCenterContainer(),
               ServiceName(),
+              const SizedBox(
+              height: 75.0,
+              ),
+              RippleAnimation(
+                child: CircleAvatar(
+                  minRadius: 75,
+                  maxRadius: 75,
+                  backgroundImage: AssetImage("assets/images/foto1.jpg"),
+                ),
+                color: Colors.grey,
+                delay: const Duration(milliseconds: 300),
+                repeat: true,
+                minRadius: 75,
+                ripplesCount: 6,
+                duration: const Duration(milliseconds: 6 * 300),
+              )
+              
             ],
           ),
         ),

@@ -42,6 +42,8 @@ dependencies:
   smooth_page_indicator: ^1.1.0
   fluttericon: ^2.0.0
   webview_flutter: ^4.8.0
+  simple_ripple_animation: ^0.0.9
+  icons_launcher: ^2.1.7
 
 dev_dependencies:
   flutter_test:
@@ -83,10 +85,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  fonts:
-    - family: Montserrat
-      fonts:
-        - asset: assets/fonts/Montserrat/Montserrat.ttf
+  # fonts:
+  #   - family: Montserrat
+  #     fonts:
+        # - asset: assets/fonts/Montserrat/
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

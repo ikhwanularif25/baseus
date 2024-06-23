@@ -3,7 +3,6 @@ import 'package:baseus/screens/initial_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'homepage.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 
 void main() {
   runApp(MyApp());
