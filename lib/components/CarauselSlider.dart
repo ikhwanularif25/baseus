@@ -18,34 +18,52 @@ class _CarouselWithImagesState extends State<CarouselWithImages> {
 
   @override
   Widget build(BuildContext context) {
-    return CarouselSlider(
-      options: CarouselOptions(
-        autoPlay: true, // Aktifkan auto play
-        autoPlayInterval: Duration(seconds: 3), // Interval auto play
-        enlargeCenterPage: true,
-        aspectRatio: 16 / 9,
-        viewportFraction: 1,
-        onPageChanged: (index, reason) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-      ),
-      items: imgList
-          .map((item) => Container(
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(15),
-                  child: Image.asset(
-                    item,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ))
-          .toList(),
+    return Stack(
+      alignment: Alignment.bottomCenter,
+      children: [
+        CarouselSlider(
+          options: CarouselOptions(
+            autoPlay: true,
+            autoPlayInterval: Duration(seconds: 3),
+            enlargeCenterPage: true,
+            aspectRatio: 16 / 9,
+            viewportFraction: 1,
+            onPageChanged: (index, reason) {
+              setState(() {
+                _currentIndex = index;
+              });
+            },
+          ),
+          items: imgList
+              .map((item) => Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(15),
+                      child: Image.asset(
+                        item,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ))
+              .toList(),
+        ),
+        Positioned(
+          bottom: 10.0,
+          child: AnimatedSmoothIndicator(
+            activeIndex: _currentIndex,
+            count: imgList.length,
+            effect: ExpandingDotsEffect(
+              dotHeight: 8.0,
+              dotWidth: 8.0,
+              activeDotColor: Colors.grey,
+              dotColor: Colors.grey,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
