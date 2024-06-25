@@ -1,9 +1,8 @@
-// ignore_for_file: camel_case_types, prefer_typing_uninitialized_variables
-
+import 'package:baseus/components/service_component/contact_us_container.dart';
 import 'package:baseus/components/service_component/help_center_container.dart';
 import 'package:baseus/components/service_component/service_name.dart';
+import 'package:baseus/components/service_component/smart_produts_container.dart';
 import 'package:flutter/material.dart';
-import 'package:simple_ripple_animation/simple_ripple_animation.dart';
 
 class Servicescreen extends StatefulWidget {
   const Servicescreen({Key? key}) : super(key: key);
@@ -20,41 +19,37 @@ class _ServicescreenState extends State<Servicescreen> {
         backgroundColor: Colors.grey[200],
         centerTitle: true,
         automaticallyImplyLeading: false,
-        title: Text(
+        title: const Text(
           "Service",
           style: TextStyle(
             fontWeight: FontWeight.bold,
           ),
         ),
-        actions: <Widget>[],
+        actions: const <Widget>[],
       ),
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.all(18.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ServiceName(
                 judul: "Help Center",
               ),
               HelpCenterContainer(),
               ServiceName(),
-              const SizedBox(
-              height: 75.0,
-              ),
-              RippleAnimation(
-                child: CircleAvatar(
-                  minRadius: 75,
-                  maxRadius: 75,
-                  backgroundImage: AssetImage("assets/images/foto1.jpg"),
+              SmartProductContainer(),
+              Text(
+                "Contact Us",
+                style: TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
                 ),
-                color: Colors.grey,
-                delay: const Duration(milliseconds: 300),
-                repeat: true,
-                minRadius: 75,
-                ripplesCount: 6,
-                duration: const Duration(milliseconds: 6 * 300),
-              )
-              
+              ),
+              const SizedBox(
+                height: 18.0,
+              ),
+              ContactUsContainer(),
             ],
           ),
         ),
