@@ -59,7 +59,7 @@ class _CarouselWithImagesState extends State<CarouselWithImages> {
               dotHeight: 8.0,
               dotWidth: 8.0,
               activeDotColor: Colors.grey,
-              dotColor: Colors.grey,
+              dotColor: Colors.white,
             ),
           ),
         ),
