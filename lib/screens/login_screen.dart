@@ -24,7 +24,82 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
         actions: [
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              showModalBottomSheet(
+                context: context,
+                builder: (BuildContext context) {
+                  return Container(
+                    height: 370,
+                    width: MediaQuery.of(context).size.width,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(12.0),
+                      ),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Text(
+                                "Choose your country or region",
+                                style: TextStyle(
+                                  fontSize: 18.0,
+                                  fontWeight: FontWeight.w800,
+                                ),
+                              ),
+                              Spacer(),
+                              IconButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                icon: Icon(
+                                  Icons.close,
+                                  size: 20.0,
+                                ),
+                              ),
+                            ],
+                          ),
+                          CheckboxItem(
+                            label: "Option 1",
+                          ),
+                          CheckboxItem(
+                            label: "Option 2",
+                          ),
+                          CheckboxItem(
+                            label: "Option 3",
+                          ),
+                          Spacer(),
+                          ElevatedButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            style: ElevatedButton.styleFrom(
+                              side: BorderSide(color: Colors.black),
+                              backgroundColor: Colors.black,
+                              minimumSize: Size(double.infinity, 50),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                            ),
+                            child: Text(
+                              'OK',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18.0,
+                              ),
+                            ),
+                          ),
+                          Spacer(),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              );
+            },
             child: Row(
               children: [
                 Text(
@@ -207,6 +282,60 @@ class _LoginScreenState extends State<LoginScreen> {
           ],
         ),
       ),
+    );
+  }
+}
+
+class CheckboxItem extends StatefulWidget {
+  final String label;
+
+  const CheckboxItem({Key? key, required this.label}) : super(key: key);
+
+  @override
+  _CheckboxItemState createState() => _CheckboxItemState();
+}
+
+class _CheckboxItemState extends State<CheckboxItem> {
+  bool _isChecked = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Text(
+          widget.label,
+          style: TextStyle(
+            fontSize: 18.0,
+          ),
+        ),
+        Spacer(),
+        Transform.scale(
+          scale: 1.15, // Adjust this value to change the size
+          child: Theme(
+            data: ThemeData(
+              checkboxTheme: CheckboxThemeData(
+                shape: CircleBorder(),
+                side: BorderSide(color: Colors.grey),
+                checkColor: WidgetStateProperty.all(Colors.yellow),
+                fillColor: WidgetStateProperty.resolveWith((states) {
+                  if (states.contains(WidgetState.selected)) {
+                    return Colors.black;
+                  }
+                  return null; // Use default color when not selected
+                }),
+              ),
+            ),
+            child: Checkbox(
+              value: _isChecked,
+              onChanged: (bool? value) {
+                setState(() {
+                  _isChecked = value ?? false;
+                });
+              },
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
