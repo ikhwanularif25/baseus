@@ -1,5 +1,7 @@
 import 'package:baseus/components/CarauselSlider.dart';
+import 'package:baseus/screens/HomeScreen/HomeScreen/AddDevice.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttericon/entypo_icons.dart';
 import 'package:fluttericon/font_awesome_icons.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -12,12 +14,34 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    return Navigator(
+      onGenerateRoute: (settings) {
+        Widget page;
+        switch (settings.name) {
+          case '/':
+            page = HomeContent();
+            break;
+          case '/add_device':
+            page = AddDevice();
+            break;
+          default:
+            page = HomeContent();
+        }
+        return MaterialPageRoute(builder: (context) => page);
+      },
+    );
+  }
+}
+
+class HomeContent extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double avatarRadius = screenWidth * 0.08;
 
     return Scaffold(
       body: Container(
-        padding: const EdgeInsets.all(20.0),
+        padding: EdgeInsets.all(20.0),
         child: Column(
           children: [
             Container(
@@ -39,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Text(
                             "Davi's Baseus",
                             style: TextStyle(
-                              fontSize: 20.0,
+                              fontSize: 18.0,
                               fontFamily: 'Montserrat-Bold',
                               fontWeight: FontWeight.bold,
                               letterSpacing: 0,
@@ -48,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           const Icon(
                             Icons.arrow_right,
-                            size: 24.0,
+                            size: 22.0,
                           ),
                         ],
                       ),
@@ -56,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         "Limau Manis",
                         style: TextStyle(
                           color: Colors.grey,
-                          fontSize: 14.0,
+                          fontSize: 12.0,
                           fontFamily: 'sen',
                           fontWeight: FontWeight.normal,
                         ),
@@ -79,6 +103,59 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             Container(
               child: CarouselWithImages(),
+            ),
+            const SizedBox(
+              height: 20.0,
+            ),
+            Container(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                "My Device",
+                style: TextStyle(
+                    fontSize: 24.0,
+                    fontFamily: 'Montserrat-Bold',
+                    fontWeight: FontWeight.bold),
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(vertical: 50),
+              child: Column(
+                children: [
+                  CircleAvatar(
+                    radius: 90,
+                    backgroundColor: Color.fromARGB(255, 228, 228, 228),
+                    child: CircleAvatar(
+                      radius: 60,
+                      backgroundColor: Colors.grey[350],
+                      child: CircleAvatar(
+                        radius: 30,
+                        backgroundColor: Colors.black,
+                        child: IconButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/add_device');
+                          },
+                          icon: Icon(
+                            Entypo.plus,
+                            size: 30.0,
+                            color: Colors.yellow,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10.0,
+                  ),
+                  Text(
+                    "Add Device",
+                    style: TextStyle(
+                      fontFamily: 'Montserrrat-Bold',
+                      fontWeight: FontWeight.normal,
+                      color: Colors.grey,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),

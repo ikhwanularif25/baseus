@@ -1,4 +1,6 @@
 // main.dart
+import 'package:baseus/screens/HomeScreen/HomeScreen/AddDevice.dart';
+import 'package:baseus/screens/HomeScreen/HomeScreen/Device.dart';
 import 'package:baseus/screens/initial_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -22,7 +24,7 @@ class _MyAppState extends State<MyApp> {
       title: 'Flutter Demo',
       navigatorKey: Get.key,
       theme: ThemeData(
-        scaffoldBackgroundColor: Colors.grey[200],
+        scaffoldBackgroundColor: Color.fromRGBO(243, 244, 248, 1),
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
         useMaterial3: true,
         textTheme: GoogleFonts.montserratTextTheme(Theme.of(context).textTheme),
@@ -31,6 +33,8 @@ class _MyAppState extends State<MyApp> {
       routes: {
         '/': (context) => InitialScreen(),
         '/HomeScreen': (context) => HomePage(),
+        '/add_device': (context) => AddDevice(),
+        '/device': (context) => Device(),
       },
     );
   }
